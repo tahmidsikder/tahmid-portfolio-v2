@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Tahmid Sikder Rifat</title>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="icon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
+<meta name="description" content="Tahmid Sikder Rifat — CSE student, vibe coder and WordPress developer from Sylhet, Bangladesh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: dark studio stage. Fixed pill nav, 3-column hero (title | portrait under a light beam | intro), then stacked sections on a 1200px rail. */
+:root{
+  --bg:#0a0a0b; --bg-2:#111113; --card:#151517; --card-2:#1c1c1f;
+  --fg:#f4f4f5; --fg-2:#a6a6ad; --fg-3:#6b6b73;
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --accent:#4a78b0; --accent-ink:#ffffff; --liquid:#2f4d72;
+  --beam:255,255,255; --dot:255,255,255; --cloud:rgba(255,255,255,.035);
+  --outline:#ffffff; --pill:rgba(28,28,31,.72); --shadow:0 10px 40px rgba(0,0,0,.45);
+  --display:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --rail:1200px; --r-lg:22px; --r-md:14px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f6f6f4; --bg-2:#efefec; --card:#ffffff; --card-2:#f1f1ee;
+    --fg:#111113; --fg-2:#55555c; --fg-3:#8a8a92;
+    --line:rgba(0,0,0,.08); --line-2:rgba(0,0,0,.16);
+    --accent:#2f5f99; --accent-ink:#ffffff; --liquid:#cfe0f3;
+    --beam:120,150,190; --dot:20,20,24; --cloud:rgba(40,60,90,.05);
+    --outline:transparent; --pill:rgba(255,255,255,.75); --shadow:0 10px 40px rgba(0,0,0,.08);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f6f6f4; --bg-2:#efefec; --card:#ffffff; --card-2:#f1f1ee;
+  --fg:#111113; --fg-2:#55555c; --fg-3:#8a8a92;
+  --line:rgba(0,0,0,.08); --line-2:rgba(0,0,0,.16);
+  --accent:#2f5f99; --accent-ink:#ffffff; --liquid:#cfe0f3;
+  --beam:120,150,190; --dot:20,20,24; --cloud:rgba(40,60,90,.05);
+  --outline:transparent; --pill:rgba(255,255,255,.75); --shadow:0 10px 40px rgba(0,0,0,.08);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .5s,color .5s}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.rail{max-width:var(--rail);margin-inline:auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.rail{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.035em;font-weight:600}
+p{margin:0}
+
+/* ---------- NAV ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+.nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 16px);left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:8px;align-items:center}
+.pill{display:flex;align-items:center;gap:2px;padding:5px;border-radius:999px;background:var(--pill);border:1px solid var(--line-2);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:var(--shadow)}
+.nav-btn{position:relative;width:40px;height:40px;border-radius:999px;display:grid;place-items:center;color:var(--fg-2);transition:color .25s,background .25s}
+.nav-btn svg{width:18px;height:18px}
+.nav-btn:hover{color:var(--fg)}
+.nav-btn.active{background:var(--card-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line-2)}
+.nav-btn .tip{position:absolute;top:calc(100% + 10px);left:50%;transform:translate(-50%,-4px);opacity:0;pointer-events:none;font-size:12px;padding:5px 9px;border-radius:8px;background:var(--fg);color:var(--bg);white-space:nowrap;transition:.2s}
+.nav-btn:hover .tip,.nav-btn:focus-visible .tip{opacity:1;transform:translate(-50%,0)}
+.talk{display:flex;align-items:center;gap:10px;padding:5px 18px 5px 5px;border-radius:999px;background:var(--fg);color:var(--bg);font-weight:500;font-size:14px;box-shadow:var(--shadow);transition:transform .25s}
+.talk:hover{transform:translateY(-1px)}
+.talk .spin{width:40px;height:40px;border-radius:999px;background:var(--bg);display:grid;place-items:center}
+.talk .spin svg{width:22px;height:22px;animation:spin 1.8s linear infinite;color:var(--fg)}
+.talk:hover .spin svg{animation-duration:.7s}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:640px){.talk span.lbl{display:none}.talk{padding:5px}.nav-btn{width:36px;height:36px}.nav{gap:6px}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;isolation:isolate}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:48px;padding-top:130px;padding-bottom:0}
+#beam{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.6s ease}
+#beam.on{opacity:1}
+.cloud{position:absolute;left:0;width:340px;height:110px;border-radius:50%;background:radial-gradient(closest-side,var(--cloud),transparent);filter:blur(8px);z-index:-2;animation:drift linear infinite}
+@keyframes drift{from{translate:-30vw 0}to{translate:110vw 0}}
+.hero-left{display:flex;flex-direction:column;gap:30px;align-items:flex-start;min-width:0;padding-bottom:80px}
+.rot{display:grid;font-size:clamp(2.2rem,4.2vw,3.4rem);line-height:1.02;font-weight:600;letter-spacing:-.045em}
+.rot > span{grid-area:1/1}
+.rot .ghost{visibility:hidden}
+.rot .w{display:inline-block;white-space:nowrap}
+.rot .ch{display:inline-block;will-change:transform,opacity,filter}
+.ch.in{animation:vaporIn .9s cubic-bezier(.22,1,.36,1) both}
+.ch.out{animation:vaporOut .55s cubic-bezier(.55,0,.75,.2) both}
+@keyframes vaporIn{0%{opacity:0;filter:blur(12px);transform:translate(var(--dx),15px) scale(1.35)}60%{opacity:.85}100%{opacity:1;filter:blur(0);transform:none}}
+@keyframes vaporOut{to{opacity:0;filter:blur(10px);transform:translate(var(--dx),-14px) scale(.9)}}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--line-2);background:var(--card);transition:transform .25s,border-color .25s}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:14px;height:14px}
+.btn .liquid{position:absolute;inset:0;z-index:-1;background:var(--liquid);color:var(--liquid);transform:translateY(82%);transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.btn .liquid svg{position:absolute;top:-14px;left:0;width:200%;height:16px;animation:wave 3.5s linear infinite}
+.btn:hover .liquid{transform:translateY(0)}
+@keyframes wave{to{transform:translateX(-50%)}}
+.btn.shine{border-color:transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(120deg,var(--line-2),var(--fg),var(--line-2)) border-box;border:1.5px solid transparent}
+.btn.shine::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,transparent 30%,rgba(var(--beam),.18) 50%,transparent 70%);transform:translateX(-120%);animation:sweep 4.5s ease-in-out infinite}
+@keyframes sweep{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+
+.portrait{position:relative;width:min(400px,78vw);align-self:end;perspective:1000px}
+.portrait img{display:block;width:100%;height:auto;transform-origin:50% 100%;will-change:transform;
+  filter:drop-shadow(2px 0 0 var(--outline)) drop-shadow(-2px 0 0 var(--outline)) drop-shadow(0 -2px 0 var(--outline));
+  -webkit-mask-image:linear-gradient(to bottom,#000 88%,transparent);mask-image:linear-gradient(to bottom,#000 88%,transparent);
+  animation:rise 1.4s cubic-bezier(.22,1,.36,1) both .15s}
+@keyframes rise{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1}}
+.portrait .floor{position:absolute;left:10%;right:10%;bottom:0;height:40px;background:radial-gradient(closest-side,rgba(var(--beam),.12),transparent);filter:blur(6px);z-index:-1}
+.hero-right{display:flex;flex-direction:column;gap:14px;max-width:340px;justify-self:end;padding-bottom:80px;font-size:15px}
+.hero-right .hi{color:var(--fg-2)}
+.hero-right .lead{color:var(--fg);font-size:17px;font-weight:500}
+.hero-right .sub{color:var(--fg-2)}
+.hero-right .loc{display:flex;align-items:center;gap:8px;color:var(--fg-3);font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+.dot-live{width:8px;height:8px;border-radius:50%;background:#3ccf7a;box-shadow:0 0 0 0 rgba(60,207,122,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(60,207,122,0)}100%{box-shadow:0 0 0 0 rgba(60,207,122,0)}}
+.blur-in{animation:blurIn 1.1s cubic-bezier(.22,1,.36,1) both}
+@keyframes blurIn{from{opacity:0;filter:blur(10px);transform:translateY(10px)}to{opacity:1;filter:none;transform:none}}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;padding-top:110px}
+  .hero-left,.hero-right{padding-bottom:0}
+  .hero-right{justify-self:start;max-width:520px;order:2}
+  .portrait{order:3;justify-self:center}
+}
+
+/* ---------- MARQUEE ---------- */
+.strip{border-block:1px solid var(--line);padding-block:26px;display:flex;flex-direction:column;gap:16px}
+.strip .eyebrow{text-align:center}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:44px;width:max-content;animation:marq 38s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.track span{font-size:clamp(18px,2.2vw,24px);font-weight:500;color:var(--fg-3);letter-spacing:-.02em;white-space:nowrap;display:flex;align-items:center;gap:44px;transition:color .3s}
+.track span:hover{color:var(--fg)}
+.track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--line-2)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+section.block{padding-block:110px}
+.sec-head{display:flex;flex-direction:column;gap:22px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem)}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:40px;padding:0 18px;border-radius:999px;border:1px solid var(--line-2);font-size:14px;color:var(--fg-2);transition:.25s}
+.chip:hover{color:var(--fg);border-color:var(--fg-3)}
+.chip.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.count{font-family:var(--mono);font-size:12px;color:var(--fg-3)}
+
+/* work cards */
+.works{display:flex;flex-direction:column;gap:22px}
+.work{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg-2);overflow:hidden;transition:border-color .3s}
+.work:hover{border-color:var(--line-2)}
+.work[hidden]{display:none!important}
+.work .vis{position:relative;min-height:340px;background:var(--card);border-right:1px solid var(--line);display:grid;place-items:center;padding:34px;overflow:hidden}
+.work .txt{padding:34px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--fg-3)}
+.work h3{font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.15}
+.work h3 em{font-style:normal;color:var(--fg-2);font-weight:500}
+.meta{font-size:14px;color:var(--fg-2)}
+.meta b{color:var(--fg);font-weight:500}
+.steps{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:12px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:8px;font-size:14px;color:var(--fg-2);counter-increment:s}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--fg-3);padding-top:2px}
+.steps b{color:var(--fg);font-weight:500;display:block}
+.link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;width:max-content;border-bottom:1px solid var(--line-2);padding-bottom:2px;transition:border-color .25s}
+.link:hover{border-color:var(--fg)}
+.link svg{width:13px;height:13px;transition:transform .25s}
+.link:hover svg{transform:translate(2px,-2px)}
+@media (max-width:860px){.work{grid-template-columns:1fr}.work .vis{border-right:0;border-bottom:1px solid var(--line);min-height:260px;padding:22px}.work .txt{padding:24px}}
+
+/* browser mock */
+.browser{width:100%;max-width:440px;border-radius:12px;background:var(--bg);border:1px solid var(--line-2);box-shadow:var(--shadow);overflow:hidden;transform:rotate(-2deg) translateY(6px);transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.work:hover .browser{transform:rotate(0) translateY(0) scale(1.02)}
+.bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line)}
+.bar i{width:8px;height:8px;border-radius:50%;background:var(--line-2)}
+.bar .url{margin-left:8px;flex:1;height:18px;border-radius:6px;background:var(--card-2);font-family:var(--mono);font-size:10px;color:var(--fg-3);display:flex;align-items:center;padding-inline:8px;white-space:nowrap;overflow:hidden}
+.page{padding:16px;display:grid;gap:10px}
+.sk{height:8px;border-radius:4px;background:var(--card-2)}
+.mock-hero{border-radius:8px;padding:18px;display:grid;gap:8px;background:linear-gradient(135deg,#123a63,#1d5c96);color:#fff}
+.mock-hero .big{font-size:26px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.mock-hero .s{font-size:11px;opacity:.85}
+.mock-hero .cta{width:max-content;font-size:10px;font-weight:600;background:#ffb020;color:#1a1a1a;padding:5px 10px;border-radius:6px}
+.mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mock-grid div{height:44px;border-radius:6px;background:var(--card-2)}
+.mock-uni{border-radius:8px;padding:18px;display:grid;grid-template-columns:1.2fr 1fr;gap:12px;background:linear-gradient(135deg,#1f2a24,#2f4a3a);color:#fff;align-items:center}
+.mock-uni .big{font-size:20px;font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.mock-uni .img{height:70px;border-radius:8px;background:radial-gradient(circle at 30% 30%,#9fd3b0,#3d7a58)}
+.code-mock{width:100%;max-width:420px;border-radius:12px;background:#0d1117;border:1px solid rgba(255,255,255,.1);box-shadow:var(--shadow);font-family:var(--mono);font-size:12px;color:#c9d1d9;padding:16px 18px;line-height:1.8;min-height:200px}
+.code-mock .p{color:#7ee787}.code-mock .k{color:#79c0ff}.code-mock .c{color:#8b949e}
+.caret{display:inline-block;width:7px;height:14px;background:#c9d1d9;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* creative cards */
+.creative{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:1000px){.creative{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.creative{grid-template-columns:1fr}}
+.cc{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg-2);overflow:hidden;display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .3s}
+.cc:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.cc .art{height:170px;background:var(--card);border-bottom:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}
+.cc .body{padding:20px;display:flex;flex-direction:column;gap:8px}
+.cc h3{font-size:18px;letter-spacing:-.02em}
+.cc p{font-size:14px;color:var(--fg-2)}
+.badge{font-family:var(--mono);font-size:11px;color:var(--fg-3);border:1px solid var(--line-2);border-radius:999px;padding:3px 9px;width:max-content}
+.note{margin-top:22px;font-size:14px;color:var(--fg-3);max-width:62ch}
+/* art: timeline */
+.tl{width:80%;display:grid;gap:8px;position:relative}
+.tl .row{display:flex;gap:4px;height:16px}
+.tl .row div{border-radius:4px;background:var(--card-2);border:1px solid var(--line-2)}
+.tl .row div.a{background:color-mix(in srgb,var(--accent) 55%,transparent)}
+.tl .row div.b{background:color-mix(in srgb,#c98b3d 55%,transparent)}
+.tl .head{position:absolute;top:-10px;bottom:-10px;width:2px;background:var(--fg);left:0;animation:play 4s linear infinite}
+.tl .head::before{content:"";position:absolute;top:-4px;left:-4px;width:10px;height:10px;border-radius:2px;background:var(--fg)}
+@keyframes play{to{left:100%}}
+/* art: shapes */
+.shapes{position:relative;width:130px;height:110px}
+.shapes i{position:absolute;display:block}
+.shapes .sq{width:56px;height:56px;border:2px solid var(--fg);left:6px;top:30px;border-radius:10px;animation:rot 7s ease-in-out infinite}
+.shapes .ci{width:60px;height:60px;border-radius:50%;background:color-mix(in srgb,var(--accent) 70%,transparent);right:6px;top:8px;mix-blend-mode:normal;animation:bob 3.2s ease-in-out infinite}
+.shapes .tri{left:50px;top:60px;width:0;height:0;border-left:26px solid transparent;border-right:26px solid transparent;border-bottom:44px solid #c98b3d;opacity:.85;animation:bob 3.2s ease-in-out infinite reverse}
+.shapes .h{position:absolute;width:8px;height:8px;border:1.5px solid var(--fg);background:var(--card)}
+@keyframes rot{50%{transform:rotate(45deg) scale(.9)}}
+@keyframes bob{50%{transform:translateY(10px)}}
+/* art: aperture */
+.ap{width:110px;height:110px;border-radius:50%;border:2px solid var(--fg-3);display:grid;place-items:center;position:relative}
+.ap::before{content:"";position:absolute;inset:10px;border-radius:50%;border:1px dashed var(--line-2);animation:spin 16s linear infinite}
+.ap .iris{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,var(--bg) 40%,var(--fg) 42%,var(--fg) 46%,transparent 48%);box-shadow:0 0 0 2px var(--fg);animation:focus 3.4s ease-in-out infinite}
+@keyframes focus{50%{transform:scale(1.55)}}
+.ap .frame{position:absolute;inset:-14px;border:0}
+.ap .frame::before,.ap .frame::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--fg)}
+.ap .frame::before{top:0;left:0;border-right:0;border-bottom:0}
+.ap .frame::after{bottom:0;right:0;border-left:0;border-top:0}
+/* art: prompt */
+.prompt{width:82%;font-family:var(--mono);font-size:12px;color:var(--fg-2);display:grid;gap:8px}
+.prompt .q{background:var(--card-2);border:1px solid var(--line-2);border-radius:10px;padding:8px 10px;color:var(--fg)}
+.prompt .bars{display:grid;gap:5px}
+.prompt .bars i{height:6px;border-radius:3px;background:var(--line-2);display:block;transform-origin:left;animation:grow 3s ease-in-out infinite}
+.prompt .bars i:nth-child(2){animation-delay:.25s;width:80%}
+.prompt .bars i:nth-child(3){animation-delay:.5s;width:60%}
+@keyframes grow{0%{transform:scaleX(0)}40%,80%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+
+/* about */
+.about-lead{font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.2;letter-spacing:-.03em;font-weight:500;max-width:30ch}
+.about-copy{display:grid;gap:14px;color:var(--fg-2);max-width:66ch;margin-top:22px}
+.bento{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:200px 200px;gap:16px;margin-top:48px}
+.tile{position:relative;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg-2);overflow:hidden;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px}
+.tile canvas{position:absolute;inset:0;width:100%;height:100%}
+.tile > *:not(canvas){position:relative}
+.tile .n{font-size:clamp(2rem,4vw,3rem);font-weight:600;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.tile .l{font-size:14px;color:var(--fg-2)}
+.tile.big{grid-row:span 2}
+@media (max-width:860px){.bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.tile{min-height:170px}.tile.big{grid-column:span 2;grid-row:auto;min-height:240px}}
+@media (max-width:480px){.bento{grid-template-columns:1fr}.tile.big{grid-column:auto}}
+
+.journey{margin-top:84px}
+.journey h3{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:22px}
+.jrow{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,2fr) minmax(0,1fr) 110px;gap:16px;padding:16px 0;border-top:1px solid var(--line);font-size:14px;align-items:baseline;transition:background .25s,padding .25s}
+.jrow:last-child{border-bottom:1px solid var(--line)}
+.jrow:hover{background:var(--bg-2);padding-inline:12px}
+.jrow .t{font-weight:500}
+.jrow .o,.jrow .k{color:var(--fg-2)}
+.jrow .y{font-family:var(--mono);font-size:12px;color:var(--fg-3);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:700px){.jrow{grid-template-columns:1fr auto;gap:4px 12px}.jrow .o{grid-column:1}.jrow .k{display:none}.jrow .y{grid-row:1;grid-column:2}}
+
+/* stack */
+.stack-groups{display:grid;gap:40px}
+.sg h3{font-size:14px;font-family:var(--mono);font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);margin-bottom:14px}
+.sg .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.skill{border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg-2);padding:16px;display:flex;flex-direction:column;gap:12px;transition:border-color .3s,transform .3s}
+.skill:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.skill .top{display:flex;align-items:center;gap:10px;font-weight:500;font-size:15px}
+.skill .ico{width:34px;height:34px;border-radius:10px;background:var(--card-2);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--fg-2);flex:none}
+.skill .ico svg{width:17px;height:17px}
+.lvl{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--fg-3)}
+.meter{display:flex;gap:3px}
+.meter i{width:14px;height:4px;border-radius:2px;background:var(--line-2)}
+.meter i.f{background:var(--fg)}
+
+/* quote */
+.quote{padding-block:120px;text-align:left}
+.quote blockquote{margin:0;font-size:clamp(1.7rem,4.2vw,3.2rem);line-height:1.12;letter-spacing:-.04em;font-weight:500;max-width:22ch}
+.quote blockquote span{color:var(--fg-3)}
+.quote cite{display:block;margin-top:22px;font-style:normal;font-family:var(--mono);font-size:12px;color:var(--fg-3);letter-spacing:.06em;text-transform:uppercase}
+
+/* contact */
+.contact h2{font-size:clamp(2.2rem,6vw,4.6rem);letter-spacing:-.05em;line-height:1}
+.cgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+@media (max-width:820px){.cgrid{grid-template-columns:1fr}}
+.ccard{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg-2);padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:border-color .3s}
+.ccard:hover{border-color:var(--line-2)}
+.ccard .v{font-size:18px;font-weight:500;letter-spacing:-.02em;user-select:all;word-break:break-word}
+.ccard .row{display:flex;gap:8px;flex-wrap:wrap}
+.mini{height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);font-size:13px;display:inline-flex;align-items:center;gap:6px;transition:.25s}
+.mini:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.mini svg{width:13px;height:13px}
+.avail{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--fg-2);margin-top:18px}
+
+/* footer */
+footer{position:relative;overflow:hidden;border-top:1px solid var(--line);padding-top:60px}
+.fcols{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.fcols .made{font-size:14px;color:var(--fg-3);max-width:34ch}
+.fl{display:flex;gap:60px}
+.fl div{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.fl b{font-weight:500;margin-bottom:6px}
+.fl a{color:var(--fg-2);transition:color .2s}
+.fl a:hover{color:var(--fg)}
+.giant{font-size:clamp(6rem,27vw,22rem);font-weight:700;letter-spacing:-.07em;line-height:.8;text-align:center;margin-top:40px;color:transparent;-webkit-text-stroke:1px var(--line-2);background:linear-gradient(to bottom,var(--card-2),transparent 85%);-webkit-background-clip:text;background-clip:text;user-select:none;transform:translateY(12%)}
+
+.fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--pill);border:1px solid var(--line-2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--shadow);transition:transform .3s}
+.fab:hover{transform:scale(1.06)}
+.fab svg{width:20px;height:20px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--fg);color:var(--bg);font-size:14px;padding:10px 16px;border-radius:999px;transition:.3s;z-index:70;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* reveal */
+.rv{transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1),filter 1s}
+.rv.pre{opacity:0;transform:translateY(24px);filter:blur(6px)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<script src="loader.js"></script>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Main">
+  <div class="pill">
+    <a class="nav-btn active" href="#home" data-sec="home" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span class="tip">Home</span></a>
+    <a class="nav-btn" href="#work" data-sec="work" aria-label="Work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg><span class="tip">Work</span></a>
+    <a class="nav-btn" href="#creative" data-sec="creative" aria-label="Creative"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg><span class="tip">Creative</span></a>
+    <a class="nav-btn" href="#about" data-sec="about" aria-label="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="tip">About</span></a>
+    <a class="nav-btn" href="#stack" data-sec="stack" aria-label="Stack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg><span class="tip">Stack</span></a>
+  </div>
+  <div class="pill"><button class="nav-btn" id="themeBtn" aria-label="Switch theme"><svg id="themeIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="tip">Theme</span></button></div>
+  <a class="talk" href="#contact"><span class="spin"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4" r="2"/><circle cx="18.5" cy="8.5" r="1.6" opacity=".8"/><circle cx="17" cy="16.5" r="1.3" opacity=".6"/><circle cx="9" cy="19" r="1.1" opacity=".45"/><circle cx="5" cy="12" r="1" opacity=".3"/></svg></span><span class="lbl">Let's talk</span></a>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <canvas id="beam" aria-hidden="true"></canvas>
+  <div class="cloud" style="top:14%;animation-duration:80s;animation-delay:-20s"></div>
+  <div class="cloud" style="top:32%;animation-duration:110s;animation-delay:-70s;width:420px"></div>
+  <div class="cloud" style="top:58%;animation-duration:95s;animation-delay:-40s"></div>
+  <div class="cloud" style="top:76%;animation-duration:120s;animation-delay:-5s;width:280px"></div>
+  <div class="rail hero-inner">
+    <div class="hero-left">
+      <h1 class="rot" id="rot" aria-label="Vibe Coder, CSE Student, WordPress Developer, Video Editor, Graphic Designer"></h1>
+      <div class="ctas">
+        <a class="btn" href="#about"><span class="liquid" aria-hidden="true"><svg viewBox="0 0 240 24" preserveAspectRatio="none"><path d="M0 12C20 2 40 2 60 12s40 10 60 0 40-10 60 0 40 10 60 0v12H0Z" fill="currentColor"/></svg></span>About me</a>
+        <a class="btn shine" href="#work">See my work <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </div>
+    </div>
+    <div class="portrait" id="portrait">
+      <picture><source type="image/avif" srcset="assets/rifat.avif"><img id="me" src="assets/rifat.webp" alt="Portrait of Tahmid Sikder Rifat in sunglasses and a checked shirt" width="760" height="914" fetchpriority="high" decoding="async"></picture>
+      <div class="floor" aria-hidden="true"></div>
+    </div>
+    <div class="hero-right">
+      <p class="hi blur-in" style="animation-delay:.3s">Hi, I'm Tahmid Sikder Rifat</p>
+      <p class="lead blur-in" style="animation-delay:.45s">I build websites and vibe-code ideas into real things.</p>
+      <p class="sub blur-in" style="animation-delay:.6s">CSE student at Metropolitan University. I make WordPress sites, ship small projects with AI tools, and edit videos and design graphics for fun.</p>
+      <p class="loc blur-in" style="animation-delay:.75s"><span class="dot-live"></span>Sylhet, Bangladesh · Open to collaborations</p>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="strip">
+  <p class="eyebrow">Tools and things I work with</p>
+  <div class="marquee"><div class="track" id="track"></div></div>
+</div>
+
+<main>
+<!-- WORK -->
+<section class="block rail" id="work">
+  <div class="sec-head rv">
+    <h2>Works.</h2>
+    <div class="filters" role="tablist" aria-label="Filter projects">
+      <button class="chip on" data-f="all" role="tab" aria-selected="true">Show all</button>
+      <button class="chip" data-f="wp" role="tab" aria-selected="false">WordPress</button>
+      <button class="chip" data-f="client" role="tab" aria-selected="false">Client sites</button>
+      <button class="chip" data-f="ai" role="tab" aria-selected="false">Vibe coding</button>
+    </div>
+    <p class="count" id="count">Showing 3 of 3 projects</p>
+  </div>
+
+  <div class="works">
+    <article class="work rv" data-cat="wp client">
+      <div class="vis">
+        <div class="browser">
+          <div class="bar"><i></i><i></i><i></i><span class="url">emergencyplumbinggroup247.co.uk</span></div>
+          <div class="page">
+            <div class="mock-hero"><span class="s">Burst pipe? Blocked drain?</span><span class="big">24/7 Emergency Plumbing</span><span class="s">Fast response across the UK</span><span class="cta">Call now</span></div>
+            <div class="mock-grid"><div></div><div></div><div></div></div>
+            <div class="sk" style="width:70%"></div><div class="sk" style="width:45%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="tags"><span>#WordPress</span><span>#Elementor</span><span>#ClientWork</span></div>
+        <h3>Emergency Plumbing Group247. <em>A round-the-clock plumbing service site for UK customers.</em></h3>
+        <p class="meta">Website · 2024 · <b>Role:</b> Frontend &amp; WordPress developer (team project)</p>
+        <ol class="steps">
+          <li><span><b>Plan the pages</b>Mapped services, service areas and the call-to-action flow for people in a hurry.</span></li>
+          <li><span><b>Build in WordPress</b>Built layouts with Elementor, plus custom HTML and CSS where the builder fell short.</span></li>
+          <li><span><b>Make it responsive</b>Tuned every section for phones, since most emergency visitors arrive on mobile.</span></li>
+        </ol>
+        <a class="link" href="https://emergencyplumbinggroup247.co.uk" target="_blank" rel="noopener">Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </div>
+    </article>
+
+    <article class="work rv" data-cat="wp client">
+      <div class="vis">
+        <div class="browser" style="transform:rotate(2deg) translateY(6px)">
+          <div class="bar"><i></i><i></i><i></i><span class="url">unilof.com</span></div>
+          <div class="page">
+            <div class="mock-uni"><span class="big">A clean, responsive brand site</span><span class="img"></span></div>
+            <div class="mock-grid"><div></div><div></div><div></div></div>
+            <div class="sk" style="width:60%"></div><div class="sk" style="width:80%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="tags"><span>#WordPress</span><span>#Elementor</span><span>#Solo</span></div>
+        <h3>Unilof. <em>A responsive website built end to end on my own.</em></h3>
+        <p class="meta">Website · 2024 · <b>Role:</b> Solo WordPress developer</p>
+        <ol class="steps">
+          <li><span><b>Set up the site</b>Installed and configured WordPress, theme and the core pages.</span></li>
+          <li><span><b>Design custom layouts</b>Created custom Elementor layouts instead of stock templates.</span></li>
+          <li><span><b>Ship and polish</b>Checked every breakpoint and cleaned up spacing before launch.</span></li>
+        </ol>
+        <a class="link" href="https://unilof.com" target="_blank" rel="noopener">Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </div>
+    </article>
+
+    <article class="work rv" data-cat="ai">
+      <div class="vis">
+        <div class="code-mock" id="codeMock" aria-hidden="true"></div>
+      </div>
+      <div class="txt">
+        <div class="tags"><span>#VibeCoding</span><span>#AI</span><span>#InProgress</span></div>
+        <h3>Vibe-coded experiments. <em>Small apps and pages built by talking to AI.</em></h3>
+        <p class="meta">Ongoing · 2025 to now · <b>Role:</b> Idea, prompts, build and fixes</p>
+        <ol class="steps">
+          <li><span><b>Start with an idea</b>Write down what the thing should do in plain words.</span></li>
+          <li><span><b>Build with AI</b>Prompt, read the code it writes, test it and iterate.</span></li>
+          <li><span><b>Learn from it</b>Each build teaches me more HTML, CSS, Git and how real apps fit together.</span></li>
+        </ol>
+        <p class="meta" style="color:var(--fg-3)">More work in progress. Building while learning.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CREATIVE -->
+<section class="block rail" id="creative" style="padding-top:20px">
+  <div class="sec-head rv">
+    <p class="eyebrow">Creative side</p>
+    <h2>Things I make for fun.</h2>
+  </div>
+  <div class="creative">
+    <article class="cc rv">
+      <div class="art"><div class="tl" aria-hidden="true"><div class="row"><div class="a" style="flex:3"></div><div style="flex:2"></div><div class="a" style="flex:4"></div></div><div class="row"><div style="flex:2"></div><div class="b" style="flex:5"></div><div style="flex:2"></div></div><div class="row"><div class="b" style="flex:6"></div><div style="flex:3"></div></div><span class="head"></span></div></div>
+      <div class="body"><span class="badge">Self-taught</span><h3>Video editing</h3><p>Cutting clips, pacing, music sync and simple motion for short videos.</p></div>
+    </article>
+    <article class="cc rv">
+      <div class="art"><div class="shapes" aria-hidden="true"><i class="sq"></i><i class="ci"></i><i class="tri"></i></div></div>
+      <div class="body"><span class="badge">Self-taught</span><h3>Graphic design</h3><p>Posters, social posts and thumbnails with a focus on clean layout.</p></div>
+    </article>
+    <article class="cc rv">
+      <div class="art"><div class="ap" aria-hidden="true"><span class="iris"></span><span class="frame"></span></div></div>
+      <div class="body"><span class="badge">Natural</span><h3>Photography</h3><p>Everyday scenes and light, finished with basic photo editing.</p></div>
+    </article>
+    <article class="cc rv">
+      <div class="art"><div class="prompt" aria-hidden="true"><span class="q">› make me a portfolio</span><span class="bars"><i></i><i></i><i></i></span></div></div>
+      <div class="body"><span class="badge">Daily</span><h3>Vibe coding</h3><p>Turning ideas into working pages with AI as my pair programmer.</p></div>
+    </article>
+  </div>
+  <p class="note rv">None of this is professional work yet. I do it because I enjoy making things look and feel good, and I get a little better with every project.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="block rail" id="about">
+  <div class="rv">
+    <p class="eyebrow">About me</p>
+    <p class="about-lead" style="margin-top:18px">I study CSE, build for the web, and spend my free time editing videos and designing.</p>
+    <div class="about-copy">
+      <p>I'm Tahmid Sikder Rifat, a Computer Science and Engineering student at Metropolitan University in Sylhet. I started with economics at National University, then moved to CSE because building things is what I enjoy most.</p>
+      <p>I've built WordPress sites for real clients, I vibe-code small projects with AI tools, and I'm learning HTML, CSS, Git and Linux along the way. I'm especially curious about web development, cyber security and new technology.</p>
+    </div>
+  </div>
+
+  <div class="bento rv">
+    <div class="tile big"><canvas class="dots" aria-hidden="true"></canvas><span class="eyebrow">Now</span><span class="n">BSc CSE</span><span class="l">Metropolitan University · Summer 2026 to present</span></div>
+    <div class="tile"><canvas class="dots" aria-hidden="true"></canvas><span class="n">5.00</span><span class="l">HSC GPA · 2024</span></div>
+    <div class="tile"><canvas class="dots" aria-hidden="true"></canvas><span class="n">5.00</span><span class="l">SSC GPA · 2022</span></div>
+    <div class="tile"><canvas class="dots" aria-hidden="true"></canvas><span class="n">2</span><span class="l">Client websites shipped</span></div>
+    <div class="tile"><canvas class="dots" aria-hidden="true"></canvas><span class="n">SYL</span><span class="l">Sylhet, Bangladesh</span></div>
+  </div>
+
+  <div class="journey rv">
+    <h3>Journey</h3>
+    <div class="jrow"><span class="t">BSc in Computer Science &amp; Engineering</span><span class="o">Metropolitan University</span><span class="k">Education</span><span class="y">2026 – Now</span></div>
+    <div class="jrow"><span class="t">Frontend &amp; WordPress Developer</span><span class="o">Emergency Plumbing Group247 (UK)</span><span class="k">Project</span><span class="y">2024</span></div>
+    <div class="jrow"><span class="t">WordPress Website Developer</span><span class="o">Unilof</span><span class="k">Project</span><span class="y">2024</span></div>
+    <div class="jrow"><span class="t">HSC · GPA 5.00 / 5.00</span><span class="o">Sylhet Cantonment Public School &amp; College</span><span class="k">Education</span><span class="y">2024</span></div>
+    <div class="jrow"><span class="t">Basic Web Development Training</span><span class="o">Youth ICT · Reg. No. 202064</span><span class="k">Certificate</span><span class="y">2023</span></div>
+    <div class="jrow"><span class="t">SSC · GPA 5.00 / 5.00</span><span class="o">Sylhet Cantonment Public School &amp; College</span><span class="k">Education</span><span class="y">2022</span></div>
+    <div class="jrow"><span class="t">BSS in Economics (transferred to CSE)</span><span class="o">National University</span><span class="k">Education</span><span class="y">Before 2026</span></div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="block rail" id="stack" style="padding-top:20px">
+  <div class="sec-head rv"><h2>My Stack</h2></div>
+  <div class="stack-groups" id="stackGroups"></div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote rail rv">
+  <blockquote>More work in progress. <span>Building while learning.</span></blockquote>
+  <cite>My motto</cite>
+</section>
+
+<!-- CONTACT -->
+<section class="block rail contact" id="contact" style="padding-top:20px">
+  <div class="rv">
+    <p class="eyebrow">Contact</p>
+    <h2 style="margin-top:16px">Ask me anything…</h2>
+    <p class="avail"><span class="dot-live"></span>Open to academic research, collaborations and small web projects.</p>
+  </div>
+  <div class="cgrid rv">
+    <div class="ccard">
+      <span class="eyebrow">Phone / WhatsApp</span>
+      <span class="v" id="phone">+88 01817 936248</span>
+      <div class="row">
+        <button class="mini" data-copy="+8801817936248"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="8" height="9" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H10"/></svg>Copy</button>
+        <a class="mini" href="https://wa.me/8801817936248" target="_blank" rel="noopener">WhatsApp ↗</a>
+      </div>
+    </div>
+    <div class="ccard">
+      <span class="eyebrow">LinkedIn</span>
+      <span class="v">in/tahmidsikder</span>
+      <div class="row"><a class="mini" href="https://www.linkedin.com/in/tahmidsikder" target="_blank" rel="noopener">Open profile ↗</a></div>
+    </div>
+    <div class="ccard">
+      <span class="eyebrow">Website</span>
+      <span class="v">tahmidsikder.me</span>
+      <div class="row"><a class="mini" href="https://www.tahmidsikder.me" target="_blank" rel="noopener">Visit ↗</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="rail fcols">
+    <p class="made">Designed and vibe-coded by Tahmid Sikder Rifat in Sylhet, Bangladesh. © <span id="yr">2026</span></p>
+    <div class="fl">
+      <div><b>Menu</b><a href="#home">Home</a><a href="#work">Works</a><a href="#about">About me</a><a href="#stack">Stack</a></div>
+      <div><b>Contact</b><a href="https://www.linkedin.com/in/tahmidsikder" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/8801817936248" target="_blank" rel="noopener">WhatsApp</a><a href="#contact">Phone</a></div>
+    </div>
+  </div>
+  <div class="giant" aria-hidden="true">rifat</div>
+</footer>
+
+<a class="fab" href="#contact" aria-label="Contact me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(()=>{
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---- theme ---- */
+const root=document.documentElement;
+try{const t=localStorage.getItem('theme'); if(t) root.dataset.theme=t;}catch(e){}
+const isDark=()=>root.dataset.theme? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+$('#themeBtn').addEventListener('click',()=>{
+  const next=isDark()?'light':'dark'; root.dataset.theme=next;
+  try{localStorage.setItem('theme',next)}catch(e){}
+  readBeam();
+});
+
+/* ---- rotating title with vapor letters ---- */
+const titles=['Vibe Coder','CSE Student','WordPress Developer','Video Editor','Graphic Designer'];
+const rot=$('#rot');
+const build=(t,cls)=>{const s=document.createElement('span');s.className=cls||'';
+  t.split(' ').forEach((w,wi)=>{const ws=document.createElement('span');ws.className='w';
+    [...w].forEach(c=>{const ch=document.createElement('span');ch.className='ch';ch.textContent=c;ws.appendChild(ch)});
+    s.appendChild(ws); if(wi<t.split(' ').length-1){s.appendChild(document.createElement('br'))}
+  }); return s;};
+titles.forEach(t=>rot.appendChild(build(t,'ghost')));
+let idx=0, cur=build(titles[0]); rot.appendChild(cur);
+const animIn=el=>el.querySelectorAll('.ch').forEach((c,i)=>{c.style.setProperty('--dx',((Math.random()*24)-12).toFixed(1)+'px');c.style.animationDelay=(i*35)+'ms';c.classList.add('in')});
+animIn(cur);
+if(!reduce) setInterval(()=>{
+  const old=cur; old.querySelectorAll('.ch').forEach((c,i)=>{c.classList.remove('in');c.style.animationDelay=(i*18)+'ms';c.classList.add('out')});
+  setTimeout(()=>{old.remove(); idx=(idx+1)%titles.length; cur=build(titles[idx]); rot.appendChild(cur); animIn(cur);},560);
+},3400);
+
+/* ---- marquee ---- */
+const tools=['WordPress','Elementor','HTML','CSS','Git & GitHub','Linux Mint','Vibe coding','AI tools','Video editing','Graphic design','Photography','Photo editing'];
+const tr=$('#track'); tr.innerHTML=[...tools,...tools].map(t=>`<span>${t}</span>`).join('');
+
+/* ---- portrait follows cursor ---- */
+const img=$('#me'), pw=$('#portrait');
+let tx=0,ty=0,cx=0,cy=0,lastMove=0;
+addEventListener('pointermove',e=>{const r=pw.getBoundingClientRect();
+  tx=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/(innerWidth/2)));
+  ty=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height*0.3))/(innerHeight/1.2)));lastMove=performance.now();},{passive:true});
+let started=false;
+img.addEventListener('animationend',()=>{started=true;img.style.animation='none'});
+setTimeout(()=>{started=true;img.style.animation='none'},1800);
+function loop(t){
+  if(started && !reduce){
+    const idle=performance.now()-lastMove>2500;
+    const gx=idle?Math.sin(t/2200)*.35:tx, gy=idle?Math.sin(t/3100)*.2:ty;
+    cx+=(gx-cx)*.06; cy+=(gy-cy)*.06;
+    img.style.transform=`translateX(${cx*12}px) rotateY(${cx*9}deg) rotateX(${-cy*4}deg) translateY(${Math.sin(t/1600)*3}px)`;
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+/* ---- light beam + dust ---- */
+const cv=$('#beam'), ctx=cv.getContext('2d'); let W,H,DPR,parts=[],beamRGB='255,255,255';
+function readBeam(){beamRGB=getComputedStyle(root).getPropertyValue('--beam').trim()||'255,255,255'}
+readBeam(); matchMedia('(prefers-color-scheme: dark)').addEventListener('change',readBeam);
+function size(){const r=cv.getBoundingClientRect();DPR=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+  parts=Array.from({length:Math.round(Math.min(160,W/8))},()=>({u:Math.random(),v:Math.random(),s:Math.random()*1.6+.4,sp:(Math.random()*.4+.1)/1000,ph:Math.random()*6.28}));}
+function beamGeom(){const p=pw.getBoundingClientRect(), h=cv.getBoundingClientRect();
+  const sx=W*0.82, sy=-60; const tx=p.left-h.left+p.width/2, tyy=p.top-h.top+p.height*0.25;
+  return {sx,sy,tx,ty:tyy};}
+function draw(t){
+  ctx.clearRect(0,0,W,H);
+  const g=beamGeom(); const ang=Math.atan2(g.ty-g.sy,g.tx-g.sx); const len=Math.hypot(g.tx-g.sx,g.ty-g.sy)*1.25;
+  const flick=.9+Math.sin(t/900)*.05+Math.sin(t/230)*.02;
+  ctx.save(); ctx.translate(g.sx,g.sy); ctx.rotate(ang);
+  const grad=ctx.createLinearGradient(0,0,len,0);
+  grad.addColorStop(0,`rgba(${beamRGB},${.30*flick})`); grad.addColorStop(.55,`rgba(${beamRGB},${.12*flick})`); grad.addColorStop(1,`rgba(${beamRGB},0)`);
+  ctx.filter='blur(28px)'; ctx.fillStyle=grad; ctx.beginPath(); ctx.moveTo(0,-30); ctx.lineTo(len,-len*.28); ctx.lineTo(len,len*.28); ctx.lineTo(0,30); ctx.closePath(); ctx.fill();
+  ctx.filter='blur(6px)'; const g2=ctx.createLinearGradient(0,0,len*.8,0); g2.addColorStop(0,`rgba(${beamRGB},${.35*flick})`); g2.addColorStop(1,`rgba(${beamRGB},0)`);
+  ctx.fillStyle=g2; ctx.beginPath(); ctx.moveTo(0,-10); ctx.lineTo(len*.8,-len*.1); ctx.lineTo(len*.8,len*.1); ctx.lineTo(0,10); ctx.closePath(); ctx.fill();
+  ctx.filter='none';
+  for(const p of parts){ if(!reduce){p.u+=p.sp; if(p.u>1)p.u=0;}
+    const x=p.u*len, spread=x*.28+30, y=(p.v-.5)*2*spread + Math.sin(t/1400+p.ph)*6;
+    const edge=1-Math.abs(p.v-.5)*2; const a=edge*(1-p.u)*(.5+.5*Math.sin(t/600+p.ph))*.9;
+    ctx.fillStyle=`rgba(${beamRGB},${a.toFixed(3)})`; ctx.beginPath(); ctx.arc(x,y,p.s,0,6.283); ctx.fill(); }
+  ctx.restore();
+  requestAnimationFrame(draw);
+}
+size(); addEventListener('resize',size);
+requestAnimationFrame(draw); setTimeout(()=>cv.classList.add('on'),500);
+
+/* ---- code mock typing ---- */
+const lines=['<span class="c">// prompt</span>','<span class="p">› </span>build a to-do app with dark mode','','<span class="k">const</span> tasks = [];','<span class="k">function</span> addTask(text) {','  tasks.push({ text, done: <span class="k">false</span> });','  render();','}','<span class="c">// ✓ works. next: save to storage</span>'];
+const cm=$('#codeMock'); let li=0;
+function typeNext(){ if(li>=lines.length){setTimeout(()=>{li=0;cm.innerHTML='';typeNext()},2600);return;}
+  cm.innerHTML=lines.slice(0,li+1).join('<br>')+' <span class="caret"></span>'; li++; setTimeout(typeNext, reduce?0:520);}
+if(reduce){cm.innerHTML=lines.join('<br>')} else typeNext();
+
+/* ---- filters ---- */
+const works=$$('.work');
+$$('.chip').forEach(b=>b.addEventListener('click',()=>{
+  $$('.chip').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});
+  const f=b.dataset.f; let n=0;
+  works.forEach(w=>{const show=f==='all'||w.dataset.cat.split(' ').includes(f); w.hidden=!show; if(show)n++;});
+  $('#count').textContent=`Showing ${n} of ${works.length} projects`;
+}));
+
+/* ---- dot-grid tiles ---- */
+const tiles=$$('canvas.dots').map(c=>({c,x:c.getContext('2d'),mx:-999,my:-999}));
+tiles.forEach(o=>{const t=o.c.parentElement;
+  t.addEventListener('pointermove',e=>{const r=o.c.getBoundingClientRect();o.mx=e.clientX-r.left;o.my=e.clientY-r.top});
+  t.addEventListener('pointerleave',()=>{o.mx=-999;o.my=-999});});
+function sizeTiles(){tiles.forEach(o=>{const r=o.c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);o.w=r.width;o.h=r.height;o.c.width=r.width*d;o.c.height=r.height*d;o.x.setTransform(d,0,0,d,0,0)})}
+sizeTiles(); addEventListener('resize',sizeTiles);
+function drawTiles(t){
+  const dot=getComputedStyle(root).getPropertyValue('--dot').trim()||'255,255,255';
+  tiles.forEach((o,k)=>{const {x,w,h}=o; if(!w)return; x.clearRect(0,0,w,h); const gap=16;
+    for(let i=gap/2;i<w;i+=gap)for(let j=gap/2;j<h;j+=gap){
+      const wave=reduce?0:Math.sin(i*.03+j*.02+t/900+k)*.5+.5;
+      const dx=i-o.mx,dy=j-o.my,d=Math.hypot(dx,dy),pull=Math.max(0,1-d/110);
+      const px=i+(d?dx/d:0)*pull*10, py=j+(d?dy/d:0)*pull*10;
+      x.fillStyle=`rgba(${dot},${(.07+wave*.1+pull*.5).toFixed(3)})`;
+      x.beginPath();x.arc(px,py,1+pull*1.2,0,6.283);x.fill();}
+  }); requestAnimationFrame(drawTiles);}
+requestAnimationFrame(drawTiles);
+
+/* ---- stack ---- */
+const ic={
+  wp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M5 8l4 11 3-8 3 8 4-11"/></svg>',
+  code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg>',
+  git:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h4a4 4 0 0 1 4 4v0"/></svg>',
+  term:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>',
+  spark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>',
+  vid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg>',
+  pen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 19l7-7 2 2-7 7zM18 13l-1.5-7.5L3 3l2.5 13.5L13 18z"/><circle cx="11" cy="11" r="2"/></svg>',
+  cam:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>',
+  img:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg>',
+  brain:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>',
+  bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>',
+  team:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M15 20a5 5 0 0 1 6-4.8"/></svg>',
+  globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+  lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  chip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>'
+};
+const L={learning:['Learning',2],practiced:['Practiced',3],natural:['Natural',4],daily:['Daily',4],hobby:['Hobby',3],focus:['Focus',3]};
+const groups=[
+  ['Build',[['WordPress','wp','practiced'],['Elementor','wp','practiced'],['HTML & CSS','code','learning'],['Git & GitHub','git','learning'],['Linux Mint','term','practiced'],['Vibe coding with AI','spark','daily']]],
+  ['Create',[['Video editing','vid','hobby'],['Graphic design','pen','hobby'],['Photography','cam','natural'],['Photo editing','img','practiced']]],
+  ['How I work',[['Problem solving','brain','natural'],['Quick learner','bolt','natural'],['Teamwork','team','natural']]],
+  ['Curious about',[['Web development','globe','focus'],['Cyber security','lock','focus'],['Modern technology','chip','focus']]]
+];
+$('#stackGroups').innerHTML=groups.map(([g,items])=>`<div class="sg rv"><h3>${g}</h3><div class="grid">${items.map(([n,i,l])=>`<div class="skill"><div class="top"><span class="ico">${ic[i]}</span>${n}</div><div class="lvl"><span>${L[l][0]}</span><span class="meter">${[1,2,3,4].map(k=>`<i class="${k<=L[l][1]?'f':''}"></i>`).join('')}</span></div></div>`).join('')}</div></div>`).join('');
+
+/* ---- nav active ---- */
+const navs=$$('.nav-btn[data-sec]');
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navs.forEach(n=>n.classList.toggle('active',n.dataset.sec===e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+['home','work','creative','about','stack','contact'].forEach(id=>{const el=document.getElementById(id);el&&so.observe(el)});
+
+/* ---- reveal (only for things below the fold at load) ---- */
+if(!reduce && 'IntersectionObserver' in window){
+  const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');ro.unobserve(e.target)}}),{threshold:.08});
+  $$('.rv').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');ro.observe(el)}});
+  setTimeout(()=>$$('.rv.pre').forEach(el=>el.classList.remove('pre')),8000);
+}
+
+/* ---- copy ---- */
+const toast=$('#toast'); const say=m=>{toast.textContent=m;toast.classList.add('show');clearTimeout(say.t);say.t=setTimeout(()=>toast.classList.remove('show'),1800)};
+$$('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+  const v=b.dataset.copy;
+  navigator.clipboard?.writeText(v).then(()=>say('Number copied')).catch(()=>{const r=document.createRange();r.selectNodeContents($('#phone'));const s=getSelection();s.removeAllRanges();s.addRange(r);say('Number selected, press Ctrl+C')}) ?? say(v);
+}));
+})();
+</script>
+
+
+</body>
+</html>
