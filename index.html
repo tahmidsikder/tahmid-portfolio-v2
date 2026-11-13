@@ -394,6 +394,12 @@ footer{position:relative;overflow:hidden;border-top:1px solid var(--line);paddin
 /* reveal */
 .rv{transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1),filter 1s}
 .rv.pre{opacity:0;transform:translateY(24px);filter:blur(6px)}
+/* items inside a revealed group rise one after another */
+.rv.pre.stg > *,.rv.pre .stg > *{opacity:0}
+.rv.go.stg > *,.rv.go .stg > *{animation:stIn .9s cubic-bezier(.22,1,.36,1) backwards;animation-delay:calc(.12s + var(--i,0) * .08s)}
+@keyframes stIn{from{opacity:0;transform:translateY(20px)}}
+.rv.go .vis > *{animation:visIn 1.3s cubic-bezier(.22,1,.36,1) .15s backwards}
+@keyframes visIn{from{opacity:0;transform:translateY(28px) scale(.96)}}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -571,7 +577,7 @@ footer{position:relative;overflow:hidden;border-top:1px solid var(--line);paddin
     </div>
   </div>
 
-  <div class="bento rv">
+  <div class="bento rv stg">
     <div class="tile big"><canvas class="dots" aria-hidden="true"></canvas><span class="eyebrow">Now</span><span class="n">BSc CSE</span><span class="l">Metropolitan University · Summer 2026 to present</span></div>
     <div class="tile"><canvas class="dots" aria-hidden="true"></canvas><span class="n">1</span><span class="l">Open-source Linux app · ClipBoard</span></div>
     <div class="tile"><canvas class="dots" aria-hidden="true"></canvas><span class="n">4</span><span class="l">Creative services · video, design, photo, web</span></div>
@@ -579,7 +585,7 @@ footer{position:relative;overflow:hidden;border-top:1px solid var(--line);paddin
     <div class="tile"><canvas class="dots" aria-hidden="true"></canvas><span class="n">SYL</span><span class="l">Sylhet, Bangladesh</span></div>
   </div>
 
-  <div class="journey rv">
+  <div class="journey rv stg">
     <h3>Journey</h3>
     <div class="jrow"><span class="t">BSc in Computer Science &amp; Engineering</span><span class="o">Metropolitan University</span><span class="k">Education</span><span class="y">2026 – Now</span></div>
     <div class="jrow"><span class="t">Frontend &amp; WordPress Developer</span><span class="o">Emergency Plumbing Group247 (UK)</span><span class="k">Project</span><span class="y">2024</span></div>
@@ -609,7 +615,7 @@ footer{position:relative;overflow:hidden;border-top:1px solid var(--line);paddin
     <h2 style="margin-top:16px">Ask me anything…</h2>
     <p class="avail"><span class="dot-live"></span>Open to academic research, collaborations and small web projects.</p>
   </div>
-  <div class="cgrid rv">
+  <div class="cgrid rv stg">
     <div class="ccard">
       <span class="eyebrow">Phone / WhatsApp</span>
       <span class="v" id="phone">+88 01817 936248</span>
@@ -622,11 +628,6 @@ footer{position:relative;overflow:hidden;border-top:1px solid var(--line);paddin
       <span class="eyebrow">LinkedIn</span>
       <span class="v">in/tahmidsikder</span>
       <div class="row"><a class="mini" href="https://www.linkedin.com/in/tahmidsikder" target="_blank" rel="noopener">Open profile ↗</a></div>
-    </div>
-    <div class="ccard">
-      <span class="eyebrow">Website</span>
-      <span class="v">tahmidsikder.me</span>
-      <div class="row"><a class="mini" href="https://www.tahmidsikder.me" target="_blank" rel="noopener">Visit ↗</a></div>
     </div>
     <div class="ccard">
       <span class="eyebrow">Email</span>
@@ -801,7 +802,7 @@ const groups=[
   ['How I work',[['Problem solving','brain','natural'],['Quick learner','bolt','natural'],['Teamwork','team','natural']]],
   ['Curious about',[['Web development','globe','focus'],['Cyber security','lock','focus'],['Modern technology','chip','focus']]]
 ];
-$('#stackGroups').innerHTML=groups.map(([g,items])=>`<div class="sg rv"><h3>${g}</h3><div class="grid">${items.map(([n,i,l])=>`<div class="skill"><div class="top"><span class="ico">${ic[i]}</span>${n}</div><div class="lvl"><span>${L[l][0]}</span><span class="meter">${[1,2,3,4].map(k=>`<i class="${k<=L[l][1]?'f':''}"></i>`).join('')}</span></div></div>`).join('')}</div></div>`).join('');
+$('#stackGroups').innerHTML=groups.map(([g,items])=>`<div class="sg rv"><h3>${g}</h3><div class="grid stg">${items.map(([n,i,l])=>`<div class="skill"><div class="top"><span class="ico">${ic[i]}</span>${n}</div><div class="lvl"><span>${L[l][0]}</span><span class="meter">${[1,2,3,4].map(k=>`<i class="${k<=L[l][1]?'f':''}"></i>`).join('')}</span></div></div>`).join('')}</div></div>`).join('');
 
 /* ---- nav active ---- */
 const navs=$$('.nav-btn[data-sec]');
@@ -810,9 +811,14 @@ const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navs.f
 
 /* ---- reveal (only for things below the fold at load) ---- */
 if(!reduce && 'IntersectionObserver' in window){
-  const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');ro.unobserve(e.target)}}),{threshold:.08});
-  $$('.rv').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');ro.observe(el)}});
-  setTimeout(()=>$$('.rv.pre').forEach(el=>el.classList.remove('pre')),8000);
+  $$('.stg').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--i',Math.min(i,8))));
+  const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.classList.remove('pre');el.classList.add('go');ro.unobserve(el);setTimeout(()=>el.style.transitionDelay='',1600)}}),{threshold:.08});
+  $$('.rv').forEach(el=>{const r=el.getBoundingClientRect(); if(r.top>innerHeight){
+    // cards side by side come in one after another
+    const row=[...el.parentElement.children].filter(s=>s.classList.contains('rv')&&Math.abs(s.getBoundingClientRect().top-r.top)<2);
+    const i=row.indexOf(el); if(i>0) el.style.transitionDelay=i*.09+'s';
+    el.classList.add('pre');ro.observe(el)}});
+  addEventListener('beforeprint',()=>$$('.rv.pre').forEach(el=>el.classList.remove('pre')));
 }
 
 /* ---- copy ---- */
